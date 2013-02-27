@@ -49,3 +49,12 @@
 [submodule "modules/logdb"]
 	path = modules/logdb
 	url = gitosis@project.colorfulstudio.com:colorfulstudio/colorful/logdb.git
+[submodule "modules/pagination"]
+	path = modules/pagination
+	url = gitosis@project.colorfulstudio.com:colorfulstudio/colorful/pagination.git
+[submodule "modules/recaptcha"]
+	path = modules/recaptcha
+	url = git://github.com/deeceefar2/kohana-recaptcha.git
+[submodule "modules/amazonses"]
+	path = modules/amazonses
+	url = gitosis@project.colorfulstudio.com:colorfulstudio/colorful/amazonses.git

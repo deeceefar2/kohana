@@ -68,7 +68,7 @@ I18n::lang('en-us');
 /**
  * Set error handler
  */
-set_exception_handler(array('Kohana_Exception', 'handler'));
+//set_exception_handler(array('Kohana_Exception', 'handler'));
 
 /**
  * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
@@ -98,7 +98,6 @@ if (isset($_SERVER['KOHANA_ENV']))
  */
 Kohana::init(array(
 	'base_url'		=> NULL,
-	'index_file'	=> '/',
 	'caching'		=> TRUE,
 ));
 
@@ -123,20 +122,20 @@ $modules = array(
 	'auth'						=> MODPATH . 'auth',					// Basic authentication
 	'orm'						=> MODPATH . 'orm',						// Object Relationship Mapping
 	'logdb'						=> MODPATH . 'logdb',					// Amazon Simple Email Service
-	'oauth2'					=> MODPATH . 'oauth2',					// OAuth2
-	'api'						=> MODPATH . 'api',						// API
+//	'oauth2'					=> MODPATH . 'oauth2',					// OAuth2
+//	'api'						=> MODPATH . 'api',						// API
 	'image'						=> MODPATH . 'image',					// Image manipulation
-	'pagination'				=> MODPATH . 'pagination',				// Pagination
+//	'pagination'				=> MODPATH . 'pagination',				// Pagination
 	'xsl'						=> MODPATH . 'xsl',						// Template xsl
 	'minion'					=> MODPATH . 'minion',					// Minion CLI Framework
-	'minion-tasks-migrations'	=> MODPATH . 'minion-tasks-migrations',	// Minion Database Migrations
 	'uid'						=> MODPATH . 'uuid',					// UUID Generation
-	'colorfulcms'				=> MODPATH . 'colorfulcms',				// Colorful CMS
+//	'colorfulcms'				=> MODPATH . 'cms',						// Colorful CMS
 	'recaptcha'					=> MODPATH . 'recaptcha',				// Recaptcha Human Check
-	'amazonses'					=> MODPATH . 'amazonses',				// Amazon Simple Email Service
+//	'amazonses'					=> MODPATH . 'amazonses',				// Amazon Simple Email Service
 );
 
 if(Kohana::$environment > Kohana::PRODUCTION) {
+	error_reporting(E_ALL & ~E_NOTICE);
 	$modules = array(
 //		'profilertoolbar'			=> MODPATH . 'profilertoolbar',			// Profiler Toolbar
 //		'userguide'					=> MODPATH . 'userguide',				// User guide and API documentation
@@ -154,27 +153,19 @@ if(Kohana::$environment > Kohana::PRODUCTION) {
 $modules = Kohana::modules($modules);
 
 
+// Set the magic salt to add to a cookie
+Cookie::$salt = 'saltpeanutssaltpeanuts';
 
-	// Set the magic salt to add to a cookie
-	Cookie::$salt = 'saltpeanutssaltpeanuts';
+if(isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
 
-	// Set trusted proxies for load-balanced servers
-	Request::$trusted_proxies = array(
-		'10.220.137.21',
-	);
+	$long = ip2long($_SERVER["REMOTE_ADDR"]);
 
-	if(isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+	if (($long >= 167772160 AND $long <= 184549375) OR ($long >= -1408237568 AND $long <= -1407188993) OR ($long >= -1062731776 AND $long <= -1062666241) OR ($long >= 2130706432 AND $long <= 2147483647) OR $long == -1) {
 
-		$long = ip2long($_SERVER["REMOTE_ADDR"]);
+		array_push(Request::$trusted_proxies, $_SERVER["REMOTE_ADDR"]);
 
-		if (($long >= 167772160 AND $long <= 184549375) OR ($long >= -1408237568 AND $long <= -1407188993) OR ($long >= -1062731776 AND $long <= -1062666241) OR ($long >= 2130706432 AND $long <= 2147483647) OR $long == -1) {
-
-			array_push(Request::$trusted_proxies, $_SERVER["REMOTE_ADDR"]);
-
-		}
 	}
-
-
+}
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
@@ -182,63 +173,56 @@ $modules = Kohana::modules($modules);
  */
 
 
-	// Error routing
-	Route::set('error', 'error(/<section>)'
-	)->defaults(array(
-		'controller'	=> 'error',
-		'action'		=> 'index',
-		'section'		=> FALSE,
-	));
+// Error routing
+Route::set('error', 'error(/<section>)'
+)->defaults(array(
+	'controller'	=> 'Error',
+	'action'		=> 'index',
+	'section'		=> FALSE,
+));
 
-	// Asset routing
-	Route::set('assets', 'assets(/<file>)',
-		array('file' => '.*')
-	)->defaults(array(
-		'controller'	=> 'assets',
-		'action'		=> 'index',
-	));
+// Asset routing
+Route::set('assets', 'assets(/<file>)',
+	array('file' => '.*')
+)->defaults(array(
+	'controller'	=> 'Assets',
+	'action'		=> 'index',
+));
 
-	// Asset routing
-	Route::set('download', 'download(/<file>)',
-		array('file' => '.*')
-	)->defaults(array(
-		'controller'	=> 'download',
-		'action'		=> 'index',
-	));
-
-
-	// API routing
-	Route::set('api', 'api(/<format>)(/<controller>(/<id>(/<custom>)))(.<extension>)',
-		array(
-			'id'		=> '[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|[0-9]*|[\w]{40}',
-			'format'	=> 'json|xml',
-			'extension'	=> 'json|xml',
-		)
-	)->defaults(array(
-		'directory'	=> 'api',
-		'action'	=> 'index',
-		'controller'=> 'error',
-		'id'		=> FALSE,
-		'format'	=> FALSE,
-		'custom'	=> FALSE,
-		'extension'	=> FALSE,
-	));
+// Asset routing
+Route::set('download', 'download(/<file>)',
+	array('file' => '.*')
+)->defaults(array(
+	'controller'	=> 'Download',
+	'action'		=> 'index',
+));
 
 
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'welcome',
-		'action'     => 'index',
-	));
+// API routing
+Route::set('api', 'api(/<format>)(/<controller>(/<id>(/<custom>)))(.<extension>)',
+	array(
+		'id'		=> '[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|[0-9]*|[\w]{40}',
+		'format'	=> 'json|xml',
+		'extension'	=> 'json|xml',
+	)
+)->defaults(array(
+	'directory'	=> 'api',
+	'action'	=> 'index',
+	'controller'=> 'Error',
+	'id'		=> FALSE,
+	'format'	=> FALSE,
+	'custom'	=> FALSE,
+	'extension'	=> FALSE,
+));
 
 
-	// Index routing
-	Route::set('default', '(<controller>(/<action>(/<id>)(/<crumbs>)))',
-		array(
-			'id'=>'[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|[0-9]*',
-			'crumbs' => '.*',
-		)
-	)->defaults(array(
-		'controller'	=> 'home',
-		'action'		=> 'index',
-	));
+// Index routing
+Route::set('default', '(<controller>(/<action>(/<id>)(/<crumbs>)))',
+	array(
+		'id'=>'[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|[0-9]*',
+		'crumbs' => '.*',
+	)
+)->defaults(array(
+	'controller'	=> 'Home',
+	'action'		=> 'index',
+));
