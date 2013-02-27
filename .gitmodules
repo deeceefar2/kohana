@@ -28,3 +28,24 @@
 [submodule "modules/minion"]
 	path = modules/minion
 	url = http://github.com/kohana/minion.git
+[submodule "modules/uuid"]
+	path = modules/uuid
+	url = http://github.com/shadowhand/uuid.git
+[submodule "modules/cms"]
+	path = modules/cms
+	url = gitosis@project.colorfulstudio.com:colorfulstudio/colorful/colorfulcms.git
+[submodule "modules/xsl"]
+	path = modules/xsl
+	url = gitosis@project.colorfulstudio.com:colorfulstudio/colorful/xsl.git
+[submodule "modules/api"]
+	path = modules/api
+	url = git@github.com:deeceefar2/kohana-api.git
+[submodule "modules/oauth2"]
+	path = modules/oauth2
+	url = git@github.com:deeceefar2/kohana-oauth2.git
+[submodule "modules/assets"]
+	path = modules/assets
+	url = git@github.com:deeceefar2/assets.git
+[submodule "modules/logdb"]
+	path = modules/logdb
+	url = gitosis@project.colorfulstudio.com:colorfulstudio/colorful/logdb.git

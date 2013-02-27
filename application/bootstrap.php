@@ -63,6 +63,13 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  */
 I18n::lang('en-us');
 
+
+
+/**
+ * Set error handler
+ */
+set_exception_handler(array('Kohana_Exception', 'handler'));
+
 /**
  * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
  *
@@ -90,7 +97,9 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-	'base_url'   => '/kohana/',
+	'base_url'		=> NULL,
+	'index_file'	=> '/',
+	'caching'		=> TRUE,
 ));
 
 /**
@@ -106,24 +115,130 @@ Kohana::$config->attach(new Config_File);
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
-Kohana::modules(array(
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	// 'database'   => MODPATH.'database',   // Database access
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	// 'minion'     => MODPATH.'minion',     // CLI Tasks
-	// 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-	));
+
+
+$modules = array(
+	'database'					=> MODPATH . 'database',				// Database access
+	'cache'						=> MODPATH . 'cache',					// Caching with multiple backends
+	'auth'						=> MODPATH . 'auth',					// Basic authentication
+	'orm'						=> MODPATH . 'orm',						// Object Relationship Mapping
+	'logdb'						=> MODPATH . 'logdb',					// Amazon Simple Email Service
+	'oauth2'					=> MODPATH . 'oauth2',					// OAuth2
+	'api'						=> MODPATH . 'api',						// API
+	'image'						=> MODPATH . 'image',					// Image manipulation
+	'pagination'				=> MODPATH . 'pagination',				// Pagination
+	'xsl'						=> MODPATH . 'xsl',						// Template xsl
+	'minion'					=> MODPATH . 'minion',					// Minion CLI Framework
+	'minion-tasks-migrations'	=> MODPATH . 'minion-tasks-migrations',	// Minion Database Migrations
+	'uid'						=> MODPATH . 'uuid',					// UUID Generation
+	'colorfulcms'				=> MODPATH . 'colorfulcms',				// Colorful CMS
+	'recaptcha'					=> MODPATH . 'recaptcha',				// Recaptcha Human Check
+	'amazonses'					=> MODPATH . 'amazonses',				// Amazon Simple Email Service
+);
+
+if(Kohana::$environment > Kohana::PRODUCTION) {
+	$modules = array(
+//		'profilertoolbar'			=> MODPATH . 'profilertoolbar',			// Profiler Toolbar
+//		'userguide'					=> MODPATH . 'userguide',				// User guide and API documentation
+//		'unittest'					=> MODPATH . 'unittest',				// Unit testing
+//		'codebench'					=> MODPATH . 'codebench',				// Benchmarking tool
+//		'logviewer'					=> MODPATH . 'logviewer',				// Kohana Log Viewer
+//		'debugtoolbar'				=> MODPATH . 'debugtoolbar',			// Debug Toolbar
+	) + $modules;
+}
+
+
+/**
+ * Enable modules. Modules are referenced by a relative or absolute path.
+ */
+$modules = Kohana::modules($modules);
+
+
+
+	// Set the magic salt to add to a cookie
+	Cookie::$salt = 'saltpeanutssaltpeanuts';
+
+	// Set trusted proxies for load-balanced servers
+	Request::$trusted_proxies = array(
+		'10.220.137.21',
+	);
+
+	if(isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+
+		$long = ip2long($_SERVER["REMOTE_ADDR"]);
+
+		if (($long >= 167772160 AND $long <= 184549375) OR ($long >= -1408237568 AND $long <= -1407188993) OR ($long >= -1062731776 AND $long <= -1062666241) OR ($long >= 2130706432 AND $long <= 2147483647) OR $long == -1) {
+
+			array_push(Request::$trusted_proxies, $_SERVER["REMOTE_ADDR"]);
+
+		}
+	}
+
+
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+
+
+	// Error routing
+	Route::set('error', 'error(/<section>)'
+	)->defaults(array(
+		'controller'	=> 'error',
+		'action'		=> 'index',
+		'section'		=> FALSE,
+	));
+
+	// Asset routing
+	Route::set('assets', 'assets(/<file>)',
+		array('file' => '.*')
+	)->defaults(array(
+		'controller'	=> 'assets',
+		'action'		=> 'index',
+	));
+
+	// Asset routing
+	Route::set('download', 'download(/<file>)',
+		array('file' => '.*')
+	)->defaults(array(
+		'controller'	=> 'download',
+		'action'		=> 'index',
+	));
+
+
+	// API routing
+	Route::set('api', 'api(/<format>)(/<controller>(/<id>(/<custom>)))(.<extension>)',
+		array(
+			'id'		=> '[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|[0-9]*|[\w]{40}',
+			'format'	=> 'json|xml',
+			'extension'	=> 'json|xml',
+		)
+	)->defaults(array(
+		'directory'	=> 'api',
+		'action'	=> 'index',
+		'controller'=> 'error',
+		'id'		=> FALSE,
+		'format'	=> FALSE,
+		'custom'	=> FALSE,
+		'extension'	=> FALSE,
+	));
+
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',
 		'action'     => 'index',
+	));
+
+
+	// Index routing
+	Route::set('default', '(<controller>(/<action>(/<id>)(/<crumbs>)))',
+		array(
+			'id'=>'[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|[0-9]*',
+			'crumbs' => '.*',
+		)
+	)->defaults(array(
+		'controller'	=> 'home',
+		'action'		=> 'index',
 	));
