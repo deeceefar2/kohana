@@ -1,0 +1,30 @@
+<?php defined('SYSPATH') or die('No direct script access.');
+
+class Request extends Kohana_Request {
+
+	public static function factory($uri = TRUE, HTTP_Cache $cache = NULL, $injected_routes = array())
+	{
+		// If this is the initial request
+		if ( ! Request::$initial && ! Kohana::$is_cli)
+		{
+			if (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])
+				AND $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
+				AND isset($_SERVER['HTTP_X_FORWARDED_FOR'])
+				AND isset($_SERVER['REMOTE_ADDR'])
+				AND in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies))
+			{
+				$secure = TRUE;
+			}
+		}
+
+		$request = parent::factory($uri,$cache,$injected_routes);
+
+		if (isset($secure))
+		{
+			// Set the request security
+			$request->secure($secure);
+		}
+		return $request;
+	}
+
+}

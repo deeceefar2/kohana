@@ -1,0 +1,848 @@
+@charset "utf-8";
+
+/* CSS Document */
+html, body {
+	background: url(/assets/images/theme/content/bg.png);
+	color: #1D76BB;
+	font-size: 12px;
+}
+
+* {
+	font-family: Arial, Helvetica, sans-serif !important;
+}
+
+h2 {
+	font-size: 40px;
+}
+
+h3 {
+	font-size: 29px;
+}
+
+h4 {
+	font-size: 20px;
+	font-weight: normal;
+}
+
+h5 {
+	font-size: 18px;
+	font-weight: normal;
+}
+
+h6 {
+	font-size: 12px;
+}
+
+p {
+	line-height: 20px;
+}
+
+pre {
+	overflow: scroll;
+}
+
+textarea {
+	resize: none;
+}
+
+img {
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #1D76BB;
+	cursor: pointer;
+}
+
+a:hover {
+	color: #58595D;
+}
+/*
+.largeSectionWhite a:hover {
+	color: #c1e4f1;
+	edfe20
+}
+*/
+/*
+
+input {
+	padding-left: 2px;
+	border-left: 1px solid black !important;
+}
+
+input:focus {
+	border-left: 3px solid #1d76bb !important;
+}
+
+*/
+
+/****************************** Header ******************************/
+.header h1 {
+	background: url(../images/theme/header/logo.png) top left no-repeat;
+}
+
+#logo {
+	text-indent: -9999px;
+}
+
+.headerLinks ul li {
+	line-height: 40px;
+	font-size: 20px;
+}
+/****************************** END: Header ******************************/
+/****************************** headerTopLinks ******************************/
+.headerTopLinks ul li a {
+	border-bottom: 2px solid #FFFFFF;
+}
+
+.headerTopLinks ul li a:hover {
+	border-bottom: 2px solid #1D76BB;
+}
+/****************************** END: headerTopLinks ******************************/
+/****************************** headerBottomLinks ******************************/
+.headerBottomLinks ul li a {
+	border-top: 2px solid #FFFFFF;
+}
+
+.headerBottomLinks ul li a:hover {
+	border-top: 2px solid #1D76BB;
+}
+
+.headerBottomLinks .selected {
+	border-top: 2px solid #1D76BB;
+	color: #58595D;
+}
+/****************************** END: headerBottomLinks ******************************/
+
+.appStoreLink {
+	background: url(/assets/images/theme/header/iphone_app_store.png) top left no-repeat;
+	text-indent: -9999px;
+}
+
+.advancedSearch {
+	line-height: 20px;
+}
+
+.searchBarBackground {
+	background: #FFFFFF;
+}
+
+#searchBar {
+	border: none;
+	color: #1D76BB;
+	font-size: 18px;
+}
+/****************************** Content ******************************/
+.darkGrayText {
+	color: #424143;
+}
+
+.lightBlueText {
+	color: #1D76BB;
+}
+
+.whiteText {
+	color: #FFFFFF;
+}
+
+.blueBar {
+	color: #FFFFFF;
+	background-color: #1D76BB;
+	font-size: 18px;
+	line-height: 40px;
+}
+
+.blueBar h5 {
+	float: left;
+}
+
+.blueBar a {
+	color: #FFFFFF;
+}
+
+.blueBar a:hover {
+	color: #c1e4f1;
+}
+
+.blueBar .selected {
+	color: #CEDC29;
+}
+
+.whiteBar {
+	background: #FFFFFF;
+}
+
+.img300x250 {
+	background: #CEE00E;
+}
+
+.img450x310 {
+	background: #1D76BB;
+}
+
+.imgFloatLeft {
+	float: left;
+}
+
+.contactUsAddress {
+	font-size: 18px;
+	line-height: 25px;
+}
+/****************************** White Sections ******************************/
+.largeSectionWhite {
+	background: #FFFFFF;
+}
+
+.largeSectionWhite p {
+	color: #424143;
+	font-size: 16px;
+	line-height: 20px;
+}
+/****************************** END: White Sections ******************************/
+/****************************** Scrollable Containers ******************************/
+.scrollableContainerLarge {
+	overflow-y: scroll;
+}
+
+.scrollableContainerLarge p {
+	font-size: 12px;
+	line-height: 14px;
+}
+/****************************** END: Scrollable Containers ******************************/
+/****************************** Forms ******************************/
+.faqForm .searchBar {
+	border: 1px solid #424143;
+}
+/****************************** Labels ******************************/
+.formSection dt {
+	font-size: 15px;
+	line-height: 25px;
+	text-align: right;
+}
+
+.formSection dt label {
+	line-height: 25px;
+}
+
+.formLabel label {
+	font-size: 15px;
+	line-height: 25px;
+}
+/****************************** END: Labels ******************************/
+/****************************** Form Errors ******************************/
+.formError {
+	color: #FF0000;
+}
+/****************************** END: Form Errors ******************************/
+/****************************** Form Text ******************************/
+.halfPageText {
+	font-size: 15px;
+	line-height: 25px;
+}
+/****************************** END: Form Text ******************************/
+/****************************** Textboxes ******************************/
+.halfPageTextbox input {
+	border: 1px solid #424143;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.textbox input {
+	border: 1px solid #424143;
+	font-size: 15px;
+}
+
+.formTextbox input {
+	border: 1px solid #424143;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.formTextbox270 input {
+	border: 0;
+}
+/****************************** END: Textboxes ******************************/
+/****************************** Textareas ******************************/
+.halfPageTextarea textarea {
+	border: 1px solid #424143;
+	font-size: 15px;
+	line-height: 25px;
+}
+
+.fullPageTextarea textarea {
+	border: 1px solid #424143;
+	font-size: 15px;
+	line-height: 25px;
+}
+/****************************** END: Textareas ******************************/
+/****************************** Checkboxes ******************************/
+.halfPageCheckbox {
+	font-size: 15px;
+	line-height: 25px;
+}
+/****************************** END: Checkboxes ******************************/
+/****************************** Selects ******************************/
+.halfPageSelect {
+	border: 1px solid #424143;
+	font-size: 15px;
+}
+
+.editListItem {
+	background: url("/assets/images/theme/content/list_edit.png") 50% 50% no-repeat;
+}
+
+.removeListItem {
+	background: url("/assets/images/theme/content/list_remove.png") 50% 50% no-repeat;
+}
+
+.formSelect {
+	line-height: 25px;
+}
+/****************************** END: Selects ******************************/
+/****************************** Submit Buttons ******************************/
+.topSearchSubmit {
+	cursor: pointer;
+	background: url("/assets/images/theme/header/magnifying_glass.png") 50% 50% no-repeat;
+	border: 0;
+}
+
+.faqSearchSubmit {
+	cursor: pointer;
+	background: url("/assets/images/theme/content/content_magnifying_glass.png") 50% 50% no-repeat;
+	border: 0;
+}
+
+.formButton {
+	background: #1D76BB;
+	color: #FFFFFF;
+	border: 0;
+	cursor: pointer;
+	font-size: 16px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.formButton:hover {
+	color: #c1e4f1;
+}
+
+.registerButton {
+	background: #CEDC29;
+	color: #1D76BB;
+	border: 0;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 30px;
+	text-align: center;
+}
+
+.registerButton:hover {
+	color: #c1e4f1;
+}
+/****************************** END: Buttons ******************************/
+/****************************** Form Result ******************************/
+.formResult {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.formSuccessful {
+	color: #4AA02C;
+}
+
+.formFailed {
+	color: #FF0000;
+}
+/****************************** END: Form Result ******************************/
+/****************************** END: Forms ******************************/
+/****************************** END: Content ******************************/
+/****************************** Landing Page ******************************/
+.landingPageVideo {
+	background: url(/assets/images/theme/content/landing_page_video_placeholder.png) top left no-repeat;
+}
+
+.landingPageSocialMedia a {
+	text-indent: -9999px;
+}
+
+.landingPageSocialMedia .facebook {
+	background: url(/assets/images/theme/content/facebook_content.png) top left no-repeat;
+}
+
+.landingPageSocialMedia .twitter {
+	background: url(/assets/images/theme/content/twitter_content.png) top left no-repeat;
+}
+/****************************** END: Landing Page ******************************/
+/****************************** Home Page ******************************/
+.homeBanner {
+	height: 500px;
+}
+
+.homeBannerLeft {
+	background: #FFFFFF;
+	font-size: 20px;
+}
+
+.homeBannerLeft p {
+	line-height: 25px;
+}
+
+.bannerLeftBrowse {
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 40px;
+}
+
+.homeBannerRight {
+	color: #FFFFFF;
+	background: #1D76BB;
+	font-size: 17px;
+}
+
+.bannerRightSignup {
+	background: url(/assets/images/theme/content/sign_up.png) top left no-repeat;
+	text-indent: -9999px;
+}
+/****************************** END: Home Page ******************************/
+/****************************** Standard Listing ******************************/
+.standardListingWrapper {
+	float: left;
+}
+
+.standardListing {
+	background: #FFFFFF;
+}
+
+.standardListingColumn {
+	float: left;
+}
+
+.standardListingFeedback {
+	line-height: 17px;
+}
+
+.listingLine {
+	padding: 1px 0;
+}
+
+.standardListingImage {
+	background: #c3e7f4;
+	overflow: hidden;
+	line-height: 132px;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.listingDefaultImage {
+	background: #c3e7f4;
+	overflow: hidden;
+	line-height: 260px;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: bold;
+	font-size: 26px;
+}
+
+.standardListingColumnRight {
+	overflow: hidden;
+}
+
+.standardListingColumnRight p {
+	line-height: 14px;
+}
+.standardListingRating {
+	background-repeat: repeat-x;
+	background-image: url(/assets/images/theme/content/listing_star_empty.png);
+}
+.standardListingRatingFilled {
+	background-repeat: repeat-x;
+	background-image: url(/assets/images/theme/content/listing_star_filled.png);
+}
+.standardListingVerified {
+	margin-left: 6px;
+	width: 17px;
+	height: 16px;
+}
+/****************************** END: Standard Listing ******************************/
+/****************************** FAQ Page ******************************/
+.question {
+	color: #424143;
+	font-size: 16px;
+	line-height: 18px;
+}
+
+.plusSmallBlue {
+	background: url(/assets/images/theme/content/plus_small_blue.png) center center no-repeat;
+}
+
+.minusSmallBlue {
+	background: url(/assets/images/theme/content/minus_small_blue.png) center center no-repeat;
+}
+
+.triangleRight {
+	background: url(/assets/images/theme/content/triangle_right.png) center center no-repeat;
+}
+
+.triangleDown {
+	background: url(/assets/images/theme/content/triangle_down.png) center center no-repeat;
+}
+/****************************** END: FAQ Page ******************************/
+/****************************** Browse Page ******************************/
+.browseSearch {
+	line-height: 35px;
+}
+
+.ratingPicker {
+	background: url(/assets/images/theme/content/browse_rating_picker.png) center center no-repeat;
+}
+
+.browseToggleSection {
+	cursor: pointer;
+}
+
+.browseOpen {
+	background: url(/assets/images/theme/content/browse_open.png) center center no-repeat;
+}
+
+.loadMoreButton {
+	background: url(/assets/images/theme/content/box_down_arrow.png) center center no-repeat;
+}
+
+.loading {
+	background: url(/assets/images/theme/colorbox/loading.gif) center center no-repeat;
+}
+
+.browseClose {
+	background: url(/assets/images/theme/content/browse_close.png) center center no-repeat;
+}
+
+.browseSearchSection {
+	border-bottom: 1px solid #A8A9AB;
+}
+
+.sectionName {
+	cursor: pointer;
+	font-size: 18px;
+	color: #424143;
+}
+
+.expandHideAllSections,
+.expandHideSection {
+	cursor: pointer;
+}
+
+.plusLarge {
+	background: url(/assets/images/theme/content/plus_large.png) center center no-repeat;
+}
+
+.minusLarge {
+	background: url(/assets/images/theme/content/minus_large.png) center center no-repeat;
+}
+
+.subSectionName {
+	cursor: pointer;
+	font-size: 16px;
+	line-height: 30px;
+}
+
+.expandHideSubSection {
+	cursor: pointer;
+}
+
+.plusSmall {
+	background: url(/assets/images/theme/content/plus_small.png) center center no-repeat;
+}
+
+.minusSmall {
+	background: url(/assets/images/theme/content/minus_small.png) center center no-repeat;
+}
+
+.expand .plusSmall {
+	display: none;
+}
+
+.expand .minusSmall {
+	display: block;
+}
+
+.resultsBreadcrumbContainer {
+	font-size: 15px;
+	line-height: 50px;
+}
+
+.browseAddListing {
+	background: url(/assets/images/theme/content/plus_small.png) right center no-repeat;
+}
+
+.loadMoreResults {
+	font-size: 18px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.loadMore {
+	cursor: pointer;
+}
+/****************************** END: Browse Page ******************************/
+/****************************** Profile Page ******************************/
+.sectionTitle {
+	cursor: pointer;
+}
+/****************************** END: Profile Page ******************************/
+/****************************** Bookmarks Page ******************************/
+.deleteListing {
+	background: url(/assets/images/theme/content/listing_delete.png) center center no-repeat;
+}
+/****************************** END: Bookmarks Page ******************************/
+/****************************** My Listings Page ******************************/
+.myListingsAddListing {
+	font-size: 18px;
+}
+
+.editListing {
+	background: url(/assets/images/theme/content/listing_edit.png) center center no-repeat;
+}
+/****************************** END: My Listings Page ******************************/
+/****************************** List With Us Page ******************************/
+.listingIconContainer {
+	text-align: center;
+}
+
+.iconPremiumListing {
+	background: url(/assets/images/theme/content/icon_premium_listing.png) top left no-repeat;
+}
+
+.iconFreeListing {
+	background: url(/assets/images/theme/content/icon_free_listing.png) top left no-repeat;
+}
+
+.examplePremiumListing {
+	background: url(/assets/images/theme/content/example_premium_listing.png) top left no-repeat;
+}
+
+.exampleFreeListing {
+	background: url(/assets/images/theme/content/example_free_listing.png) top left no-repeat;
+}
+
+.checkMarkLarge {
+	background: url(/assets/images/theme/content/check_mark_large.png) top left no-repeat;
+}
+
+.tableListingBenefits {
+	border-collapse: collapse;
+}
+
+.tableListingBenefits td {
+	text-align: center;
+}
+
+.tableListingBenefitsBorderRow {
+	border-bottom: 6px solid #666666;
+}
+
+.purchaseContainer {
+	line-height: 160px;
+}
+/****************************** END: List With Us Page ******************************/
+/****************************** 404 Error ******************************/
+.error404 p {
+	font-size: 22px;
+	line-height: 46px;
+}
+/****************************** END: 404 Error ******************************/
+/****************************** Premium/Free Listing Page ******************************/
+.bookmarkListing {
+	background: url(/assets/images/theme/content/icon_bookmark.png) center left no-repeat;
+	font-size: 18px;
+	line-height: 28px;
+}
+
+.reportListing {
+	background: url(/assets/images/theme/content/icon_report_up.png) center left no-repeat;
+	font-size: 18px;
+	line-height: 28px;
+}
+
+.buyListing {
+	background: url(/assets/images/theme/content/icon_shopping_cart.png) center left no-repeat;
+	font-size: 18px;
+	line-height: 28px;
+}
+
+.contactListing {
+	background: url(/assets/images/theme/content/icon_email_up.png) center left no-repeat;
+	font-size: 18px;
+	line-height: 28px;
+}
+
+.listingContactInfo {
+	font-size: 14px;
+}
+
+.listingPremiumRibbon {
+	background: url(/assets/images/theme/content/premium_ribbon.png) center left no-repeat;
+}
+
+.listingWebsite {
+	background: url(/assets/images/theme/content/icon_website.png) center left no-repeat;
+}
+
+.listingEmail {
+	background: url(/assets/images/theme/content/icon_email_up.png) center left no-repeat;
+}
+
+.listingPhone {
+	background: url(/assets/images/theme/content/icon_phone.png) center left no-repeat;
+}
+
+.listingFax {
+	background: url(/assets/images/theme/content/icon_fax.png) center left no-repeat;
+}
+
+.listingPaymentMethods {
+	background-color: #A8A9AD;
+}
+
+.listingInfo p {
+	font-size: 14px !important;
+}
+
+.rateListing {
+	background: url(/assets/images/theme/content/rate_listing.png) center left no-repeat;
+}
+
+.reviewBluebar {
+	color: #FFFFFF;
+	background: #1D76BB;
+	font-size: 18px;
+	line-height: 30px;
+}
+
+.listingRating,
+.reviewRating {
+	background: url(/assets/images/theme/content/listing_rating_big_blue.png) center left repeat-x;
+}
+
+.listingRatingFilled,
+.reviewRatingFilled {
+	background: url(/assets/images/theme/content/listing_rating_big_white.png) center left repeat-x;
+}
+
+.userActionSmallContainer {
+	font-size: 12px;
+}
+
+.reportReviewSmall {
+	background: url(/assets/images/theme/content/icon_report_small_up.png) center left no-repeat;
+	color: #FFFFFF;
+	line-height: 15px;
+}
+
+.reviewDate,
+.reviewContent p {
+	font-size: 14px;
+}
+
+.commentReply {
+	background: #1D76BB;
+}
+
+.commentReply p {
+	color: #FFFFFF !important;
+}
+/****************************** END: Premium/Free Listing Page ******************************/
+/****************************** Buy Premium/Free Listing Page ******************************/
+.listingActions {
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.listingExpiration {
+	font-size: 14px;
+	line-height: 26px;
+}
+/****************************** END: Buy Premium/Free Listing Page ******************************/
+/****************************** Report Issue Page ******************************/
+.messageText {
+	min-height: 58px;
+	font-size: 20px;
+	vertical-align: middle;
+	background-position: right top;
+	background-repeat: no-repeat;
+	padding-right: 78px;
+	padding-top: 5px;
+}
+
+.iconCircleCheckmark {
+	background-image: url(/assets/images/theme/content/circle_checkmark_green.png);
+}
+
+.iconCircleFailure {
+	background-image: url(/assets/images/theme/content/circle_failure_green.png);
+}
+
+.iconCircleError {
+	background-image: url(/assets/images/theme/content/circle_error_green.png);
+}
+
+.iconCircleForbidden {
+	background-image: url(/assets/images/theme/content/circle_forbidden_green.png);
+}
+
+.iconCircleSuccess {
+	background-image: url(/assets/images/theme/content/circle_success_green.png);
+}
+
+.iconCircleXRed {
+	background-image: url(/assets/images/theme/content/circleX_red.png);
+}
+/****************************** End: Report Issue Page ******************************/
+/****************************** Footer ******************************/
+.footerContentWrapper {
+	color: #FFFFFF;
+	background: #1D76BB;
+
+	font-size: 11px;
+	line-height: 18px;
+}
+
+.footerContentWrapper ul {
+	list-style-type: none;
+}
+
+.footerContentWrapper a {
+	color: #FFFFFF;
+}
+
+.footerContentWrapper a:hover {
+	color: #58595D;
+}
+
+.footerLeft {
+	border-right: 2px solid #FFFFFF;
+}
+
+.quickBlurb {
+	overflow: hidden;
+}
+
+.footerRight {
+	border-left: 2px solid #FFFFFF;
+}
+
+.footerRightTop {
+	border-bottom: 1px solid #FFFFFF;
+}
+
+.footerSocialMedia.facebook {
+	background: url(/assets/images/theme/footer/facebook.png) top left no-repeat;
+}
+
+.footerSocialMedia.twitter {
+	background: url(/assets/images/theme/footer/twitter.png) top left no-repeat;
+}
+/****************************** END: Footer ******************************/

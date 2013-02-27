@@ -1,0 +1,1344 @@
+@charset "utf-8";
+
+/* CSS Document */
+body, div, span, ol, ul, li, h1, h2, h3, h4, h5, h6, form, p, td, a {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: inherit;
+}
+
+html, body {
+	height: 100%;
+}
+
+* {
+	margin: 0;
+	zoom: 1;
+}
+
+h2 {
+	padding-bottom: 20px;
+}
+
+h3 {
+	padding-bottom: 20px;
+}
+
+h4 {
+	padding-bottom: 20px;
+}
+
+h5 {
+	padding-bottom: 10px;
+}
+
+h6 {
+	padding-bottom: 15px;
+}
+
+p {
+	padding-bottom: 20px;
+}
+
+ol, ul {
+	margin-left: 20px;
+	padding-bottom: 10px;
+}
+
+/* ie defaults to inline */
+img {
+	display: block;
+}
+
+label {
+	cursor: pointer;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.alignCenter {
+	margin: 0 auto;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.clearLeft {
+	clear: left;
+}
+
+.clearRight {
+	clear: right;
+}
+
+.clearer {
+    clear: both;
+	height: 0px;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 990px;
+}
+
+.mainWrapper {
+	width: 100%;
+}
+
+.col50 {
+	width: 50%;
+}
+
+.pageLinks {
+	font-size: 20px;
+	line-height: 20px;
+}
+
+.pageLinks .pageLink{
+	padding: 0 3px;
+	vertical-align: middle;
+}
+
+.pageLinks .pageRight,
+.pageLinks .pageLeft {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.pageLinks .selected {
+	color: #c1e4f1;
+}
+
+/****************************** Header ******************************/
+.headerWrapper {
+	margin: -15px 0;
+}
+
+.header {
+	margin: 0 auto;
+}
+
+.header h1 {
+	height: 145px;
+	margin: 23px 0 0;
+	width: 469px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+#logo {
+	height: 145px;
+	width: 469px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.headerLinks ul {
+	margin: 0;
+	padding: 0;
+}
+
+.headerLinks ul li {
+	list-style: none;
+}
+
+
+.headerLinks ul li a {
+	width: 125px;
+	display: block;
+}
+/****************************** END: Header ******************************/
+/****************************** headerTopLinks ******************************/
+.headerTopLinks ul li {
+	padding-left: 30px;
+	float: right;
+}
+/****************************** END: headerTopLinks ******************************/
+/****************************** headerBottomLinks ******************************/
+.headerBottomLinks {
+	padding-top: 60px;
+}
+
+.headerBottomLinks ul li {
+	padding-right: 30px;
+	float: left;
+}
+/****************************** END: headerBottomLinks ******************************/
+
+.appStoreLink {
+	height: 45px;
+	margin-top: 35px;
+	width: 136px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.headerSearch {
+	height: 45px;
+	margin-top: 90px;
+	width: 300px;
+}
+
+.advancedSearch {
+	height: 20px;
+}
+
+.searchBarBackground {
+	height: 25px;
+	width: 300px;
+}
+
+#searchBar {
+	height: 25px;
+	padding: 0 5px;
+	width: 260px;
+}
+
+/****************************** Colorbox *****************************/
+
+#colorbox {
+	margin-top: -18px;
+}
+
+#colorbox .content {
+	width: 660px;
+	overflow: visible;
+}
+
+#colorbox .threeColumn {
+	width: 660px;
+	overflow: visible;
+}
+
+#colorbox .padding15All {
+	padding: 0;
+}
+
+#colorbox .blueBar {
+	cursor: move;
+}
+
+/****************************** Content ******************************/
+
+.oneColumn {
+	width: 330px;
+}
+
+.twoColumn {
+	width: 660px;
+}
+
+.threeColumn {
+	width: 990px;
+}
+
+.contentWrapper {
+	margin: 0 auto;
+	width: 990px;
+}
+
+.padding15All {
+	padding: 15px;
+}
+
+.padding12All {
+	padding: 12px;
+}
+
+.largeSectionWrapper {
+	width: 960px;
+}
+
+.blueBar {
+	height: 40px;
+	padding: 0 20px;
+}
+
+.blueBar h5 {
+	padding-bottom: 0;
+	padding-right: 25px;
+}
+
+.blueBarRight h5 {
+	padding-right: 40px;
+}
+
+.blueBar .expandHide {
+	padding: 0;
+}
+
+.whiteBar {
+	height: 50px;
+	padding: 0 20px;
+}
+
+.img300x250 {
+	height: 250px;
+	width: 300px;
+}
+
+.img450x310 {
+	height: 310px;
+	width: 450px;
+}
+
+.imgFloatLeft {
+	float: left;
+	margin: 0 20px 20px 0;
+}
+
+.acceptTerms .formButton {
+	margin-bottom: 0px;
+	margin-top: 40px;
+}
+
+.browseSearch .formButton {
+	margin: 5px 0;
+}
+
+.contactUsAddressContainer {
+	padding-left: 60px;
+}
+
+.contactUsAddress {
+	padding: 10px 0;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.faqSearch h4 {
+	padding: 0;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+/****************************** White Sections ******************************/
+.largeSectionWhite {
+	padding: 20px;
+}
+
+.columnHalfPage {
+	width: 460px;
+}
+/****************************** END: White Sections ******************************/
+/****************************** Scrollable Containers ******************************/
+.scrollableContainerLarge {
+	height: 650px;
+	padding-right: 20px;
+}
+/****************************** END: Scrollable Containers ******************************/
+/****************************** Values ******************************/
+
+
+.formValues dt {
+	height: 25px;
+	padding-top: 10px;
+	padding-right: 12px;
+	padding-bottom: 10px;
+	padding-left: 0pt;
+	width: 153px;
+
+	text-align: right;
+	font-weight: bold;
+}
+
+.formValues dd {
+	height: 25px;
+	padding: 10px;
+	width: 275px;
+
+	text-align: left;
+}
+
+
+/****************************** END: Values *************************/
+/****************************** Forms ******************************/
+.halfPageForm {
+	width: 460px;
+}
+
+#recaptcha_widget_div {
+	margin-right: 10px;
+	float: right;
+}
+
+.formSpacer {
+	height: 25px;
+}
+
+.faqForm .searchBar {
+	margin: 0 10px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+/****************************** Labels ******************************/
+.formSection dt {
+	height: 25px;
+	padding: 10px 12px 10px 0;
+	width: 153px;
+}
+
+.formSection dt label {
+	height: 25px;
+	padding: 0;
+}
+
+.formLabel {
+	padding: 10px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.formLabel label {
+	height: 25px;
+	padding: 0;
+}
+
+
+.formSection .formSubmit {
+	width: 295px;
+}
+/****************************** END: Labels ******************************/
+/****************************** Form Errors ******************************/
+.formError {
+	padding: 0 10px 0 175px;
+	width: 275px;
+}
+
+.fullPageFormError {
+	padding: 0 10px 0 10px;
+}
+/****************************** END: Form Errors ******************************/
+/****************************** Form Text ******************************/
+.halfPageText {
+	height: 25px;
+	padding: 10px;
+	width: 275px;
+}
+/****************************** END: Form Text ******************************/
+/****************************** Textboxes ******************************/
+.halfPageTextbox {
+	padding: 10px;
+}
+
+.halfPageTextbox input,
+.textbox input {
+	height: 23px;
+	padding: 0 5px;
+	width: 263px;
+}
+
+.textbox {
+	padding: 0 15px;
+}
+
+.textbox input {
+	height: 24px;
+	width: 123px;
+}
+
+
+
+.formTextbox {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.formTextbox270 {
+	padding: 0;
+}
+
+.formTextbox270 input {
+	height: 26px;
+	padding: 0 5px;
+	width: 258px;
+}
+/****************************** END: Textboxes ******************************/
+/****************************** Checkboxes ******************************/
+.halfPageCheckbox {
+	height: 25px;
+	line-height: 25px;
+	margin: 10px;
+	width: 275px;
+}
+
+.halfPageCheckbox input {
+	margin-right: 5px;
+}
+/****************************** END: Checkboxes ******************************/
+/****************************** Selects ******************************/
+.halfPageSelect {
+	height: 25px;
+	width: 273px;
+	line-height: 25px;
+	margin: 10px;
+	padding: 0;
+	overflow: hidden;
+}
+.halfPageSelect select {
+	width: 275px;
+	padding: 5px 6px 8px 2px;
+	margin: -1px;
+	vertical-align: middle;
+	border: 0;
+}
+
+.select {
+	padding: 0 15px;
+}
+
+.dateSecondarySelect {
+	margin-left: 15px;
+}
+
+.halfPageSelectbox {
+	padding: 10px;
+	width: 440px;
+}
+
+.halfPageSelectbox select {
+	height: 250px;
+	width: 265px;
+}
+
+.listManipulation {
+	width: 265px;
+}
+
+.editListItem,
+.removeListItem {
+	height: 19px;
+	margin-right: 5px;
+	width: 19px;
+	display: inline-block;
+	color: transparent;
+	cursor: pointer;
+}
+
+
+.formSelect {
+	height: 25px;
+	padding: 10px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+/****************************** END: Selects ******************************/
+/****************************** Textareas ******************************/
+.formTextarea {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.halfPageTextarea,
+.fullPageTextarea {
+	padding: 10px;
+}
+
+.halfPageTextarea textarea {
+	height: 173px;
+	padding: 0 5px;
+	width: 263px;
+}
+
+.fullPageTextarea textarea {
+	height: 115px;
+	padding: 0 5px;
+	width: 888px;
+}
+/****************************** END: Textareas ******************************/
+/****************************** Submit Buttons ******************************/
+.topSearchSubmit {
+	height: 25px;
+	padding: 0;
+	width: 30px;
+}
+
+.faqSearchSubmit {
+	height: 25px;
+	padding: 0;
+	width: 34px;
+}
+
+.formButton {
+	height: 30px;
+	margin: 10px;
+	padding: 0 25px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+.registerButton {
+	padding: 5px 25px;
+	display: block;
+}
+
+/****************************** END: Buttons ******************************/
+/****************************** Form Result ******************************/
+.formResult {
+	padding-bottom: 10px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+/****************************** END: Form Result ******************************/
+/****************************** END: Forms ******************************/
+/****************************** END: Content ******************************/
+/****************************** Landing Page ******************************/
+.landingPage .header {
+	height: 205px;
+}
+
+.welcomeMessage {
+	width: 420px;
+}
+
+.landingPageVideo {
+	height: 360px;
+	padding-bottom: 40px;
+	width: 640px;
+}
+
+.landingPageSocialMedia {
+	height: 35px;
+	padding: 20px;
+	width: 310px;
+}
+
+.landingPageSocialMedia a {
+	height: 35px;
+	width: 139px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.landingPageSocialMedia .twitter {
+	margin-left: 32px;
+}
+
+.landingPage .newsletterSignUp {
+	line-height: 30px;
+	width: 650px;
+}
+
+.landingPage .formSection dt {
+	width: 185px;
+}
+
+.landingPage .footerLeft,
+.landingPage .footerRight {
+	border: 0;
+}
+
+.landingPage .footerSocialMedia.facebook {
+	padding-bottom: 5px;
+}
+/****************************** END: Landing Page ******************************/
+/****************************** Home Page ******************************/
+.homeBanner {
+	height: 500px;
+}
+
+.homeBannerLeft {
+	width: 620px;
+	padding: 20px;
+}
+
+.homeVideoPlaceholder {
+	margin-top: 20px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.homeBannerLeft p {
+	padding-bottom: 25px;
+}
+
+.homeBannerRight {
+	position: relative;
+	width: 260px;
+}
+
+.bannerRightSignup {
+	height: 40px;
+	width: 145px;
+	display: block;
+	float: right;
+}
+/****************************** END: Home Page ******************************/
+/****************************** Standard Listing ******************************/
+.standardListing {
+	height: 251px;
+}
+
+.standardListingTitleBar {
+}
+
+.listingSmallTitle {
+	line-height: 17px;
+	margin-bottom: 4px;
+	padding: 0;
+}
+
+.standardListingColumn {
+	height: 230px;
+	width: 132px;
+}
+
+.standardListingColumnLeft {
+	margin-right: 6px;
+	position: relative;
+}
+
+.standardListingBase {
+	bottom: 0;
+	position: absolute;
+}
+
+.standardListingFeedback {
+	height: 17px;
+	width: 132px;
+	margin-bottom: 4px;
+}
+
+.standardListingRating {
+	width: 80px;
+	height: 15px;
+}
+
+.standardListingRatingFilled {
+	height: 15px;
+}
+
+.standardListingRatingNumber {
+	padding-left: 5px;
+}
+
+.standardListingImage {
+	display: block;
+	width: 132px;
+	height: 132px;
+}
+
+.listingDefaultImage {
+	width: 260px;
+	height: 250px;
+}
+
+.standardListingColumnRight {
+	margin-left: 6px;
+	overflow: hidden;
+	position: relative;
+}
+/****************************** END: Standard Listing ******************************/
+/****************************** FAQ Page ******************************/
+.hideAll {
+	display: none;
+}
+
+.faqSection {
+	padding-bottom: 25px;
+}
+
+.faqSection h5 {
+	padding-bottom: 25px;
+}
+
+.faqSearchResultsSection {
+	padding-bottom: 0;
+}
+
+.question {
+	margin: 15px 0;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.expandHideIndividualQuestion,
+.expandHideIndividualSection {
+	height: 13px;
+	padding: 0 5px 0 20px;
+	width: 15px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	cursor: pointer;
+}
+
+.expandHideAllQuestions {
+	cursor: pointer;
+}
+
+.plusSmallBlue {
+	height: 12px;
+	width: 12px;
+}
+
+.minusSmallBlue {
+	height: 12px;
+	width: 12px;
+}
+
+.answer {
+	display: none;
+}
+
+.answerTextContainer {
+	padding-top: 10px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+/****************************** END: FAQ Page ******************************/
+/****************************** Browse Page ******************************/
+.browseSearch dt {
+	padding: 0 10px 0 20px;
+}
+
+.ratingPickerContainer {
+	height: 35px;
+}
+
+.ratingPicker {
+	height: 35px;
+	width: 82px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.browseToggleSection,
+.loadMoreSection {
+	height: inherit;
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+}
+
+.loading #loadmore{
+	visibility: hidden;
+}
+
+.loading .whiteBar{
+	background-color: #1D76BB;
+	background-image: url(/assets/images/theme/colorbox/loading.gif);
+	background-position:  center center;
+	background-repeat: no-repeat;
+}
+
+.browseHeading,
+.loadMoreHeading {
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.browseButton {
+	bottom: 0;
+	height: 20px;
+	position: absolute;
+	width: inherit;
+}
+
+.loadMoreButton {
+	height: 21px;
+	width: 103px;
+	margin: 0 auto;
+}
+
+.browseOpen {
+	height: inherit;
+}
+
+.browse .browseOpen {
+	display: block;
+}
+
+.categories .browseOpen {
+	display: none;
+}
+
+.browseClose {
+	height: inherit;
+}
+
+.browse .browseClose {
+	display: none;
+}
+
+.categories .browseClose {
+	display: block;
+}
+
+.category {
+	margin-bottom: 10px;
+	border-bottom: 2px solid #a8a9ab;
+}
+
+.category.noborder {
+	border-bottom: none;
+	margin-bottom: 0;
+}
+
+.categoryTitle {
+	display: block;
+	width: 90%;
+	font-size: 18px;
+	color: #424143;
+	margin-bottom: 10px;
+}
+
+.categoryTitle a:hover {
+	color: #58595d;
+}
+
+.category .children {
+	display: none;
+	margin-left: 15px;
+}
+
+.selected .children {
+	display: block;
+}
+
+.selected .sectionName {
+	color: #1D76BB;
+}
+
+.selected .plusLarge {
+	display: none;
+}
+
+.selected .minusLarge {
+	display: block;
+}
+
+.browseColumn {
+	display: none;
+}
+
+.browseSearchSection {
+	margin-bottom: 15px;
+}
+
+.sectionName {
+	margin-bottom: 15px;
+	display: block;
+}
+
+.expandHideSection {
+	margin-top: 4px;
+}
+
+.plusLarge {
+	height: 12px;
+	width: 12px;
+}
+
+.minusLarge {
+	height: 12px;
+	width: 12px;
+	display: none;
+}
+
+.subSectionsContainer {
+	display: none;
+	padding-left: 15px;
+}
+
+.browseSearchSubSection {
+	margin-bottom: 5px;
+}
+
+.expandHideSubSection {
+	margin-top: 9px;
+}
+
+.plusSmall {
+	height: 10px;
+	width: 12px;
+}
+
+.minusSmall {
+	height: 10px;
+	width: 12px;
+	display: none;
+}
+
+.browseAddListing {
+	padding-right: 14px;
+}
+/****************************** END: Profile Page ******************************/
+/****************************** Bookmarks Page ******************************/
+.deleteListing {
+	margin: 0 6px;
+	width: 13px;
+	height: 13px;
+}
+/****************************** END: Bookmarks Page ******************************/
+/****************************** My Listings Page ******************************/
+.editListing {
+	margin: 0 6px;
+	width: 13px;
+	height: 13px;
+}
+/****************************** END: My Listings Page ******************************/
+/****************************** Account Page ******************************/
+.accountForm {
+}
+/****************************** END: Account Page ******************************/
+/****************************** Advertise With Us Page ******************************/
+.advertiseContactUs {
+	padding-top: 20px;
+}
+/****************************** END: Advertise With Us Page ******************************/
+/****************************** List With Us Page ******************************/
+.tableListingBenefits td {
+	width: 128px;
+}
+
+.tableListingBenefitsRow {
+	height: 170px;
+}
+
+.checkMarkLarge {
+	height: 38px;
+	width: 41px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.listingIconContainer {
+	padding: 55px 25px 0 0;
+	width: 235px;
+}
+
+.listingIconContainer .iconPremiumListing {
+	margin-bottom: 35px;
+}
+
+.iconPremiumListing {
+	height: 157px;
+	width: 182px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.iconFreeListing {
+	height: 118px;
+	width: 119px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.exampleListing {
+	height: 259px;
+	width: 309px;
+}
+
+.listingDescription {
+	width: 600px;
+}
+
+.listingDescriptionWithPadding {
+	padding-bottom: 75px;
+}
+
+.purchaseContainer {
+	direction: rtl;
+	height: 160px;
+	vertical-align: middle;
+	width: 480px;
+}
+
+.purchaseContainer .iconPremiumListing,
+.purchaseContainer .iconFreeListing {
+	margin-right: 40px;
+}
+/****************************** END: List With Us Page ******************************/
+/****************************** 404 Error ******************************/
+.error404 p {
+	padding: 0;
+}
+
+.iconCircleXRed {
+	height: 92px;
+	width: 93px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+/****************************** END: 404 Error ******************************/
+/****************************** Login Page ******************************/
+.loginForgotPassword {
+	text-decoration: underline;
+}
+/****************************** END: Login Page ******************************/
+/****************************** Premium/Free Listing Page ******************************/
+.userActionContainer {
+	padding-top: 5px;
+}
+
+.userAction {
+	margin-left: 40px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.listingPremiumBaner {
+	height:
+}
+
+.bookmarkListing {
+	height: 28px;
+	padding-left: 18px;
+}
+
+.reportListing {
+	height: 28px;
+	padding-left: 26px;
+}
+
+.buyListing {
+	height: 28px;
+	padding-left: 33px;
+}
+
+.contactListing {
+	height: 28px;
+	padding-left: 37px;
+}
+
+.premiumListing .listingTitle {
+	padding: 0;
+}
+
+.listingTitle {
+	width: 464px;
+}
+
+.premiumListingLargeImage {
+	padding-bottom: 10px
+}
+
+.listingSmallImage {
+	padding: 10px 10px 0 10px;
+}
+
+.listingThumbs {
+	margin: 0 -10px;
+}
+
+.listingContactInfo a:hover {
+	color: #1D76BB;
+}
+
+.listingContactInfo dl {
+	padding-bottom: 20px;
+}
+
+.listingContactInfo dt,
+.listingContactInfo dd {
+	line-height: 25px;
+	height: 25px;
+	margin: 7px 0;
+}
+
+.listingContactInfo dt {
+	width: 50px;
+}
+
+.listingPaymentMethods {
+	height: 50px;
+	margin-bottom: 20px;
+	width: 260px;
+}
+
+.listingPayerSources {
+	border: 2px solid #A8A9AD;
+	height: 176px;
+	padding: 10px 15px;
+	width: 226px;
+}
+
+.payerSource {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.reviewsAndRating .largeSectionWhite h4 {
+	padding: 0;
+}
+
+.ratingContainer h5 {
+	padding-right: 15px;
+}
+
+.listingRating,
+.listingRatingFilled {
+	width: 100px;
+	height: 40px;
+}
+
+.reviewRating,
+.reviewRatingFilled {
+	height: 30px;
+	width: 100px;
+}
+
+.rateListing {
+	height: 25px;
+	width: 146px;
+}
+
+.reviewBluebar {
+	height: 30px;
+	padding: 0 20px;
+}
+
+.userActionSmallContainer {
+	height: 15px;
+}
+
+.reportReviewSmall {
+	padding-left: 20px;
+}
+
+.replyToComment {
+	padding: 10px 0 5px;
+}
+
+.commentReplyContainer {
+	padding: 20px;
+}
+
+.commentReply {
+	padding: 10px;
+}
+
+.commentReply p {
+	padding-bottom: 10px;
+}
+
+.userActionContainer,
+.bookmarkListing,
+.reportListing,
+.buyListing,
+.listingBreadcrumbsContainer,
+.listingAddress,
+.reviewNumber,
+.listingPaymentMethods,
+.listingPayerSources,
+.ratingContainer,
+.overallRating,
+.listingRatingContainer,
+.listingRating,
+.listingRatingFilled,
+.reviewRatingContainer,
+.reviewRating,
+.reviewRatingFilled,
+.userActionSmallContainer,
+.reportReviewSmall,
+.reviewBluebar img,
+.replyToComment {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+/****************************** END: Premium/Free Listing Page ******************************/
+/****************************** Buy Premium/Free Listing Page ******************************/
+.listingExpiration {
+	padding-left: 10px;
+}
+/****************************** END: Buy Premium/Free Listing Page ******************************/
+/****************************** Delete Bookmark Page ******************************/
+.deleteBookmark .formSection dt {
+	width: 160px;
+}
+
+.deleteBookmarkFormSubmit {
+	padding-right: 193px;
+}
+/****************************** END: Delete Bookmark Page ******************************/
+/****************************** Footer ******************************/
+.footerContentWrapper {
+	height: 210px;
+	padding: 20px 0;
+	margin: 20px 15px 0 15px;
+	position: relative;
+}
+
+.footerContentWrapper ul {
+	margin: 0;
+	padding: 0;
+}
+
+.footerColumn {
+	height: 100%;
+	width: 260px;
+}
+
+.footerLeft {
+	padding: 0 34px 0 20px;
+}
+
+.footerCenter {
+	padding: 0 34px;
+}
+
+.footerRight {
+	padding: 0 20px 0 34px;
+}
+
+.footerCenterList {
+	width: 50%;
+}
+
+.footerRightTop {
+	padding-bottom: 20px;
+}
+
+.footerRightBottom {
+	padding-top: 20px;
+}
+
+.footerSocialMedia {
+	height: 20px;
+	margin-right: 8px;
+	width: 81px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+
+.footerCredits {
+	position: absolute;
+	text-align: center;
+	width: 260px;
+	bottom: 20px;
+}
+/****************************** END: Footer ******************************/
