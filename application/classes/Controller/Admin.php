@@ -19,4 +19,10 @@ class Controller_Admin extends Controller_Base {
 		$this->template->set_filename('home');
 	}
 
+	public function action_tools()
+	{
+		// Set the name of the template to use
+		$this->template->set_filename('tools/articles');
+	}
+
 }

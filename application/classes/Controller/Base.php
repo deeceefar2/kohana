@@ -38,9 +38,9 @@ class Controller_Base extends Controller_XSL {
 		{
 			if(!$this->user) {
 				Session::instance()->set('post_login_redirect_url', $this->request->url());
-				$this->request->redirect('login');
+				$this->redirect('/login',303);
 			} elseif(!Auth::instance()->logged_in($required_roles)) {
-				$this->request->redirect('forbidden');
+				$this->redirect('/forbidden',303);
 			}
 		}
 

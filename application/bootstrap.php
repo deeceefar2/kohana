@@ -97,7 +97,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-	'base_url'		=> NULL,
+	'index_file'	=> '/',
 	'caching'		=> TRUE,
 ));
 
@@ -129,9 +129,9 @@ $modules = array(
 	'xsl'						=> MODPATH . 'xsl',						// Template xsl
 	'minion'					=> MODPATH . 'minion',					// Minion CLI Framework
 	'uid'						=> MODPATH . 'uuid',					// UUID Generation
-//	'colorfulcms'				=> MODPATH . 'cms',						// Colorful CMS
+	'colorfulcms'				=> MODPATH . 'cms',						// Colorful CMS
 	'recaptcha'					=> MODPATH . 'recaptcha',				// Recaptcha Human Check
-//	'amazonses'					=> MODPATH . 'amazonses',				// Amazon Simple Email Service
+	'amazonses'					=> MODPATH . 'amazonses',				// Amazon Simple Email Service
 );
 
 if(Kohana::$environment > Kohana::PRODUCTION) {
@@ -213,6 +213,19 @@ Route::set('api', 'api(/<format>)(/<controller>(/<id>(/<custom>)))(.<extension>)
 	'format'	=> FALSE,
 	'custom'	=> FALSE,
 	'extension'	=> FALSE,
+));
+
+// Index routing
+Route::set('admin', '<directory>/<controller>(/<action>(/<id>)(/<crumbs>))',
+	array(
+		'id'		=> '[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|[0-9]*',
+		'crumbs'	=> '.*',
+		'directory'	=> 'admin/tools',
+	)
+)->defaults(array(
+	'directory'		=> 'Admin',
+	'controller'	=> 'Home',
+	'action'		=> 'index',
 ));
 
 

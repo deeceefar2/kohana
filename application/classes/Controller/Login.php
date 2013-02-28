@@ -10,7 +10,7 @@ class Controller_Login extends Controller_Base {
 			if($this->request->is_ajax())
 				$this->template->set_global('redirect', '/profile/');
 			else
-				$this->request->redirect('/profile/');
+				$this->redirect('/profile/',303);
 		}
 
 		// Set the name of the template to use
@@ -78,9 +78,9 @@ class Controller_Login extends Controller_Base {
 
 						return;
 					} elseif(isset($post_login_redirect_url))
-						$this->request->redirect($post_login_redirect_url);
+						$this->redirect($post_login_redirect_url,303);
 					else
-						$this->request->redirect('/');
+						$this->redirect('/',303);
 				}
 
 			}
@@ -106,7 +106,7 @@ class Controller_Login extends Controller_Base {
 		if ($this->request->method() == Request::POST)
 		{
 			if(!empty($_REQUEST['cancel'])) {
-                $this->request->redirect('medvoyager://cancel');
+                $this->redirect('medvoyager://cancel',303);
 			}
 
 			$validation = Validation::factory($this->request->post());
@@ -132,9 +132,9 @@ class Controller_Login extends Controller_Base {
 						$post_login_redirect_url = Session::instance()->get('post_login_redirect_url');
 
 						if(isset($post_login_redirect_url))
-							$this->request->redirect($post_login_redirect_url);
+							$this->redirect($post_login_redirect_url,303);
 						else
-							$this->request->redirect('/');
+							$this->redirect('/',303);
 
 						$successfulSubmission = true;
 					}
@@ -155,7 +155,7 @@ class Controller_Login extends Controller_Base {
 			if($this->request->is_ajax())
 				$this->template->set_global('redirect', '/profile/');
 			else
-				$this->request->redirect('/profile/');
+				$this->redirect('/profile/',303);
 		}
 
 		// Set the name of the template to use
@@ -189,10 +189,10 @@ class Controller_Login extends Controller_Base {
 
 				if( $validation->check() ){
 
-					$user = ORM::factory('user')->where('username','=',$this->request->post('login_or_email'))->or_where('email','=',$this->request->post('login_or_email'))->find();
+					$user = ORM::factory('User')->where('username','=',$this->request->post('login_or_email'))->or_where('email','=',$this->request->post('login_or_email'))->find();
 
 					// Create a new autologin token
-					$token = ORM::factory('user_token');
+					$token = ORM::factory('User_Token');
 
 					// Set token data
 					$token->user_id = $user->pk();
@@ -202,7 +202,7 @@ class Controller_Login extends Controller_Base {
 
 
 					# Log new User Email
-					$message = ORM::factory('message');
+					$message = ORM::factory('Message');
 					$message->addTo($token->user->email);
 					$message->message_from = 'noreply@colorfulstudio.com';
 					$message->message_subject = 'MedVoyager: Forgot Password';
@@ -238,13 +238,13 @@ class Controller_Login extends Controller_Base {
 			if($this->request->is_ajax())
 				$this->template->set_global('redirect', '/profile/');
 			else
-				$this->request->redirect('/profile/');
+				$this->redirect('/profile/',303);
 		}
 
 		if($this->request->query('token')) {
 
 			// Load the token and user
-			$token = ORM::factory('user_token', array('token' => $this->request->query('token')));
+			$token = ORM::factory('User_Token', array('token' => $this->request->query('token')));
 
 			if ($token->loaded() AND $token->user->loaded())
 			{
@@ -256,7 +256,7 @@ class Controller_Login extends Controller_Base {
 				$token->delete();
 
 				if($this->request->query('cancel')!=1)
-					$this->request->redirect('/profile/account/');
+					$this->redirect('/profile/account/',303);
 
 			} else {
 				$this->template->errors = array(
@@ -264,10 +264,10 @@ class Controller_Login extends Controller_Base {
 				);
 			}
 		}
-		$this->request->redirect('/');
+		$this->redirect('/',303);
 	}
 
 	public static function isLoginOrEmail($login_or_email) {
-		return (boolean)(ORM::factory('user')->where('username','=',$login_or_email)->or_where('email','=',$login_or_email)->find()->loaded());
+		return (boolean)(ORM::factory('User')->where('username','=',$login_or_email)->or_where('email','=',$login_or_email)->find()->loaded());
 	}
 }

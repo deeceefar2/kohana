@@ -37,7 +37,7 @@ class Controller_Register extends Controller_Base {
 					->rule('password_confirm',				'not_empty')
 				;
 
-				$user = ORM::factory('user');
+				$user = ORM::factory('User');
 				$user->values($this->request->post());
 
 				$user->save($validation);
@@ -58,14 +58,14 @@ class Controller_Register extends Controller_Base {
 				$message->message_from = 'noreply@colorfulstudio.com';
 				$message->message_subject = "MedVoyager: Email Confirmation";
 
-				$email_template = View::factory('Email/EmailConfirmation');
+				$email_template = View::factory('email/email_confirmation');
 				$email_template->token = $token->token;
 				$email_template->user = $user;
 
 				SimpleEmailService::factory()->sendEmail($message,$email_template);
 
 				// Redirect to report thank you
-				$this->template->set_filename('Message');
+				$this->template->set_filename('message');
 				$this->template->message_title = 'Registration Successful';
 				$this->template->message_text = 'Thank you for registering for MedVoyager.  Please validate you email by clicking on the link sent to your registered email address.';
 				$this->template->message_icon = 1;
@@ -88,7 +88,7 @@ class Controller_Register extends Controller_Base {
 
 		if(Auth::instance()->logged_in() != 0){
 			#redirect to the user account
-			$this->request->redirect('profile/');
+			$this->redirect('profile/',303);
 		}
 
 		if($this->request->query('token')) {
