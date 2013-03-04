@@ -20,10 +20,10 @@ class Model_Message extends Model_Base {
 	);
 
 	protected $_has_many = array(
-		'attachments'	=> array('model'=>'file', 'foreign_key' => 'file_id', 'through' => 'message_files'),
-		'users'			=> array('model'=>'user', 'foreign_key' => 'user_id', 'through' => 'message_users'),
-		'replies'		=> array('model'=>'message', 'foreign_key' => 'parent_id'),
-		//'children'	=> array('model'=>'category', 'foreign_key' => 'parent_id'),
+		'attachments'	=> array('model'=>'File', 'foreign_key' => 'file_id', 'through' => 'message_files'),
+		'users'			=> array('model'=>'User', 'foreign_key' => 'user_id', 'through' => 'message_users'),
+		'replies'		=> array('model'=>'Message', 'foreign_key' => 'parent_id'),
+		//'children'	=> array('model'=>'Category', 'foreign_key' => 'parent_id'),
 	);
 
 	protected $_serialize_columns = array(

@@ -17,11 +17,11 @@ class Controller_Category extends Controller_Base {
 					->rule('csrf',					'Security::check')
 				;
 
-				$category = ORM::factory('category');
+				$category = ORM::factory('Category');
 
 				$category->values($this->request->post());
 
-				$parent = ORM::factory('category')->where('category_id','=',$category->parent_id)->order_by('category_name','DESC')->find();
+				$parent = ORM::factory('Category')->where('category_id','=',$category->parent_id)->order_by('category_name','DESC')->find();
 
 				$category->category_depth = $parent->category_depth + 1;
 
@@ -32,7 +32,7 @@ class Controller_Category extends Controller_Base {
 			}
 		}
 
-		$this->template->categories = ORM::factory('category')->find_all();
+		$this->template->categories = ORM::factory('Category')->find_all();
 	}
 
 }

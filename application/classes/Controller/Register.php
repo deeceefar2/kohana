@@ -94,16 +94,16 @@ class Controller_Register extends Controller_Base {
 		if($this->request->query('token')) {
 
 			// Load the token and user
-			$token = ORM::factory('user_token', array('token' => $this->request->query('token')));
+			$token = ORM::factory('User_Token', array('token' => $this->request->query('token')));
 
 			if ($token->loaded() AND $token->user->loaded())
 			{
-				$token->user->add('roles', ORM::factory('role', array('name' => 'active')))->save();
+				$token->user->add('roles', ORM::factory('Role', array('name' => 'active')))->save();
 
 				Auth::instance()->force_login($token->user, true);
 
 				# Send registrtion email
-				$message = ORM::factory('message');
+				$message = ORM::factory('Message');
 				$message->addTo($token->user->email);
 				$message->message_from = 'noreply@colorfulstudio.com';
 				$message->message_subject = "MedVoyager: Welcome";

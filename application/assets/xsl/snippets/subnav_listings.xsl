@@ -13,9 +13,11 @@
 							<xsl:text>Categories</xsl:text>
 						</a>
 						<xsl:text> / </xsl:text>
-						<xsl:apply-templates select="$crumbs/category" mode="crumb">
-							<xsl:sort select="category_depth" data-type="number" order="ascending" />
-						</xsl:apply-templates>
+						<xsl:if test="$crumbs/category">
+							<xsl:apply-templates select="$crumbs/category" mode="crumb">
+								<xsl:sort select="category_depth" data-type="number" order="ascending" />
+							</xsl:apply-templates>
+						</xsl:if>
 					</h5>
 				</span>
 				<a href="/listings/new" class="floatRight">Add Listing +</a>

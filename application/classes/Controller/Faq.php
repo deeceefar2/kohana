@@ -31,7 +31,7 @@ class Controller_Faq extends Controller_Base {
 			if( $validation->check() ){
 
 				# Send it
-				$message = ORM::factory('message');
+				$message = ORM::factory('Message');
 				$message->addTo('noreply@colorfulstudio.com');
 				$message->message_from = 'noreply@colorfulstudio.com';
 				$message->message_subject = "MedVoyager: FAQ Form";
@@ -62,17 +62,17 @@ class Controller_Faq extends Controller_Base {
 		);
 
 		if( $this->request->method() == 'GET' and $this->request->query('question_title')){
-			$this->template->question_sections = ORM::factory('question_section')->find_all();
+			$this->template->question_sections = ORM::factory('Question_Section')->find_all();
 			$query = $this->request->query('question_title');
-			$this->template->questions = ORM::factory('question')->where('question_answer','!=','')
+			$this->template->questions = ORM::factory('Question')->where('question_answer','!=','')
 				->and_where_open()
 					->where('question_title','like',"%$query%")
 					->or_where('question_answer','like',"%$query%")
 				->and_where_close()
 				->find_all();
 		} else {
-			$this->template->question_sections = ORM::factory('question_section')->find_all();
-			$this->template->questions = ORM::factory('question')->and_where('question_answer','!=','')->find_all();
+			$this->template->question_sections = ORM::factory('Question_Section')->find_all();
+			$this->template->questions = ORM::factory('Question')->and_where('question_answer','!=','')->find_all();
 		}
 	}
 }

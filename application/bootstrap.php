@@ -181,53 +181,18 @@ Route::set('error', 'error(/<section>)'
 	'section'		=> FALSE,
 ));
 
-// Asset routing
-Route::set('assets', 'assets(/<file>)',
-	array('file' => '.*')
+
+// Profile routing
+Route::set('profile', 'profile(/<controller>(/<id>(/<action>)))',
+		array(
+				'id'=>'[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}',
+		)
 )->defaults(array(
-	'controller'	=> 'Assets',
-	'action'		=> 'index',
+		'directory'		=> 'profile',
+		'controller'	=> 'profile',
+		'action'		=> 'index',
+		'id'			=> FALSE,
 ));
-
-// Asset routing
-Route::set('download', 'download(/<file>)',
-	array('file' => '.*')
-)->defaults(array(
-	'controller'	=> 'Download',
-	'action'		=> 'index',
-));
-
-
-// API routing
-Route::set('api', 'api(/<format>)(/<controller>(/<id>(/<custom>)))(.<extension>)',
-	array(
-		'id'		=> '[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|[0-9]*|[\w]{40}',
-		'format'	=> 'json|xml',
-		'extension'	=> 'json|xml',
-	)
-)->defaults(array(
-	'directory'	=> 'api',
-	'action'	=> 'index',
-	'controller'=> 'Error',
-	'id'		=> FALSE,
-	'format'	=> FALSE,
-	'custom'	=> FALSE,
-	'extension'	=> FALSE,
-));
-
-// Index routing
-Route::set('admin', '<directory>/<controller>(/<action>(/<id>)(/<crumbs>))',
-	array(
-		'id'		=> '[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|[0-9]*',
-		'crumbs'	=> '.*',
-		'directory'	=> 'admin/tools',
-	)
-)->defaults(array(
-	'directory'		=> 'Admin',
-	'controller'	=> 'Home',
-	'action'		=> 'index',
-));
-
 
 // Index routing
 Route::set('default', '(<controller>(/<action>(/<id>)(/<crumbs>)))',

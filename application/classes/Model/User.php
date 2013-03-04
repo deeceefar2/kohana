@@ -12,7 +12,7 @@ class Model_User extends Model_Auth_User {
 
 	// Relationships
 	protected $_belongs_to = array(
-		//'parent'   	=> array('model'=>'category', 'foreign_key' => 'parent_id'),
+		//'parent'   	=> array('model'=>'Category', 'foreign_key' => 'parent_id'),
 	);
 
 	protected $_has_many = array(

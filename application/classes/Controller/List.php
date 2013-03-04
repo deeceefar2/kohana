@@ -7,8 +7,8 @@ class Controller_List extends Controller_Base {
 		// Set the name of the template to use
 		$this->template->set_filename('list_with_us');
 
-		$this->template->premium_listing = ORM::factory('listing')->where('listing_state','&','2')->order_by('listing_review_value','desc')->limit(1)->find_all();
-		$this->template->free_listing = ORM::factory('listing')->order_by('listing_review_value','desc')->limit(1)->find_all();
+		$this->template->premium_listing = ORM::factory('Listing')->where('listing_state','&','2')->order_by('listing_review_value','desc')->limit(1)->find_all();
+		$this->template->free_listing = ORM::factory('Listing')->order_by('listing_review_value','desc')->limit(1)->find_all();
 	}
 
 }

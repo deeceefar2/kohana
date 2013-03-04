@@ -31,7 +31,7 @@ class Controller_Contact extends Controller_Base {
 			if( $validation->check() ){
 
 				# Log new User Email
-				$message = ORM::factory('message');
+				$message = ORM::factory('Message');
 				$message->addTo('noreply@colorfulstudio.com');
 				$message->addReplyTo($this->request->post('email'));
 				$message->message_from = 'MedVoyager<noreply@colorfulstudio.com>';

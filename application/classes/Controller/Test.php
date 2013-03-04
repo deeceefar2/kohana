@@ -14,7 +14,7 @@ class Controller_Test extends Controller_Base {
 			foreach($places as $place) {
 				try{
 
-					$listing = ORM::factory('listing');
+					$listing = ORM::factory('Listing');
 
 					$listing->where('google_id','=',$place['id'])->find();
 
@@ -63,10 +63,10 @@ class Controller_Test extends Controller_Base {
 						$listing->save();
 						if(sizeof($place['types'])>0) {
 							foreach($place['types'] as $type) {
-								$category = ORM::factory('category')->where('google_type','=',$type)->find();
+								$category = ORM::factory('Category')->where('google_type','=',$type)->find();
 								if($category->loaded()) {
 
-									ORM::factory('listing_category')->values(
+									ORM::factory('Listing_Category')->values(
 										array(
 											'listing_id' => $listing->listing_id,
 											'category_id' => $category->category_id,

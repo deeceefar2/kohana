@@ -9,8 +9,8 @@ class Controller_Listings extends Controller_Base {
 		// Set the name of the template to use
 		$this->template->set_filename('listings');
 
-		$this->template->categories = ORM::factory('category')->find_all();
-		$listings = ORM::factory('listing');
+		$this->template->categories = ORM::factory('Category')->find_all();
+		$listings = ORM::factory('Listing');
 
 		$this->pagination->total_items =  $listings->count_all();
 		$listings->offset($this->pagination->offset)->limit($this->pagination->items_per_page);
@@ -29,12 +29,13 @@ class Controller_Listings extends Controller_Base {
 		$categories = array();
 
 		foreach($crumbs as $category_slug) {
-			$last_category = ORM::factory('category')->where('category_slug','=',$category_slug)->find();
-			array_push($categories, $last_category);
+			$last_category = ORM::factory('Category')->where('category_slug','=',$category_slug)->find();
+			if($last_category->loaded())
+				array_push($categories, $last_category);
 		}
 
 		$this->template->crumbs = $categories;
-		$this->template->categories = ORM::factory('category')->find_all()->as_array();
+		$this->template->categories = ORM::factory('Category')->find_all()->as_array();
 
 		$listings = $last_category->listings;
 
@@ -43,9 +44,9 @@ class Controller_Listings extends Controller_Base {
 		$count =  $listings->count_all();
 
 		if($count == 0) {
-			$listings = ORM::factory('listing');
+			$listings = ORM::factory('Listing');
 			$count =  $listings->count_all();
-			$listings = ORM::factory('listing');
+			$listings = ORM::factory('Listing');
 		} else {
 			$listings = $last_category->listings;
 		}
@@ -81,7 +82,7 @@ class Controller_Listings extends Controller_Base {
 			foreach($places as $place) {
 				try{
 
-					$listing = ORM::factory('listing');
+					$listing = ORM::factory('Listing');
 
 					$listing->where('google_id','=',$place['id'])->find();
 
@@ -139,10 +140,10 @@ class Controller_Listings extends Controller_Base {
 						$listing->save();
 						if(sizeof($place['types'])>0) {
 							foreach($place['types'] as $type) {
-								$categories = ORM::factory('category')->where('google_type','LIKE','%'.$type.'%')->find_all()->as_array();
+								$categories = ORM::factory('Category')->where('google_type','LIKE','%'.$type.'%')->find_all()->as_array();
 								foreach($categories as $category) {
 									try{
-										ORM::factory('listing_category')->values(
+										ORM::factory('Listing_Category')->values(
 											array(
 												'listing_id' => $listing->listing_id,
 												'category_id' => $category->category_id,
@@ -175,7 +176,7 @@ class Controller_Listings extends Controller_Base {
 			}
 		}
 
-		$search = ORM::factory('search');
+		$search = ORM::factory('Search');
 		if($this->request->query('search_query'))
 			$search->search_query = $this->request->query('search_query');
 		elseif($this->request->method() == Request::POST)
@@ -209,7 +210,7 @@ class Controller_Listings extends Controller_Base {
 
 		$this->template->categories =  array_values($categories);
 */
-		$this->template->categories = ORM::factory('category')->find_all()->as_array();
+		$this->template->categories = ORM::factory('Category')->find_all()->as_array();
 	}
 
 	public function action_advanced_search()
@@ -278,7 +279,7 @@ class Controller_Listings extends Controller_Base {
 		// Set the name of the template to use
 		$this->template->set_filename('listing_new');
 
-		$type = ORM::factory('type')->where('type_name','=','test')->find();
+		$type = ORM::factory('Type')->where('type_name','=','test')->find();
 
 		if($this->request->method() == Request::POST) {
 			try{
@@ -293,7 +294,7 @@ class Controller_Listings extends Controller_Base {
 
 				throw new ORM_Validation_Exception('Just a test.', $validation);
 
-				$listing = ORM::factory('listing');
+				$listing = ORM::factory('Listing');
 
 				$listing->values($this->request->post());
 
@@ -305,7 +306,7 @@ class Controller_Listings extends Controller_Base {
 
 				if($this->request->post('categories')) {
 					foreach($this->request->post('categories') as $key=>$value) {
-						ORM::factory('listing_category')->values(
+						ORM::factory('Listing_Category')->values(
 							array(
 								'listing_id' => $listing->listing_id,
 								'category_id' => $value,
@@ -316,7 +317,7 @@ class Controller_Listings extends Controller_Base {
 
 				foreach($type->fields->find_all()->as_array() as $field) {
 					if($this->request->post($field->field_type->field_type_slug . '_' . $field->field_id)) {
-						ORM::factory('listing_field')->values(
+						ORM::factory('Listing_Field')->values(
 							array(
 								'user_id'				=> $this->user->user_id,
 								'listing_id'			=> $listing->listing_id,
@@ -333,9 +334,9 @@ class Controller_Listings extends Controller_Base {
 			}
 		}
 
-		$this->template->categories = ORM::factory('category')->order_by('category_name','ASC')->find_all();
+		$this->template->categories = ORM::factory('Category')->order_by('category_name','ASC')->find_all();
 
-		$this->template->types = ORM::factory('type')->find_all();
+		$this->template->types = ORM::factory('Type')->find_all();
 
 		$this->template->type = $type->as_array(true);
 	}

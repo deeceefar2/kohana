@@ -18,7 +18,7 @@ class Controller_Listing extends Controller_Base {
 		// Set the name of the template to use
 		$this->template->set_filename('listing');
 
-		$listing = ORM::factory('listing')->where('listing_id','=',$this->request->param('id'))->with('default_category:parent:parent:parent')->find();
+		$listing = ORM::factory('Listing')->where('listing_id','=',$this->request->param('id'))->with('default_category:parent:parent:parent')->find();
 
 		if(!$listing->loaded()) {
 			throw new HTTP_Exception_404('The requested URL :uri was not found on this server.', array(
@@ -54,10 +54,10 @@ class Controller_Listing extends Controller_Base {
 
 	public function action_bookmark()
 	{
-		$listing = ORM::factory('listing')->where('listing_id','=',$this->request->param('id'))->find();
+		$listing = ORM::factory('Listing')->where('listing_id','=',$this->request->param('id'))->find();
 		if($listing->loaded()) {
 			try{
-				$bookmark = ORM::factory('bookmark');
+				$bookmark = ORM::factory('Bookmark');
 				$bookmark->listing_id = $listing->listing_id;
 				$bookmark->user_id = $this->user->user_id;
 				$bookmark->save();
@@ -82,7 +82,7 @@ class Controller_Listing extends Controller_Base {
 	}
 
 	public function action_bookmark_delete() {
-		$listing = ORM::factory('listing')->where('listing_id','=',$this->request->param('id'))->find();
+		$listing = ORM::factory('Listing')->where('listing_id','=',$this->request->param('id'))->find();
 		if($listing->loaded()) {
 			try{
 				$this->user->bookmarks->where('listing_id','=',$listing->listing_id)->find()->delete();
@@ -108,7 +108,7 @@ class Controller_Listing extends Controller_Base {
 
 	public function action_review()
 	{
-		$listing = ORM::factory('listing')->where('listing_id','=',$this->request->param('id'))->find();
+		$listing = ORM::factory('Listing')->where('listing_id','=',$this->request->param('id'))->find();
 		if($listing->loaded()) {
 			try{
 				// Initialize the validation library and setup some rules
@@ -120,11 +120,11 @@ class Controller_Listing extends Controller_Base {
 				;
 				$old_review = NULL;
 				if($this->request->post('review_id')) {
-					$old_review = ORM::factory('review')->where('review_id','=',$this->request->post('review_id'))->and_where('user_id','=',$this->user->user_id)->and_where('listing_id','=',$listing->listing_id)->find();
+					$old_review = ORM::factory('Review')->where('review_id','=',$this->request->post('review_id'))->and_where('user_id','=',$this->user->user_id)->and_where('listing_id','=',$listing->listing_id)->find();
 					if($old_review->loaded())
 						$old_review->delete();
 				}
-				$review = ORM::factory('review');
+				$review = ORM::factory('Review');
 				$review->values($this->request->post());
 				$review->listing_id = $listing->listing_id;
 				$review->user_id = $this->user->user_id;
@@ -132,7 +132,7 @@ class Controller_Listing extends Controller_Base {
 
 				if(floor($listing->listing_state / 2) % 2 == 1 && $old_review==NULL && $review->review_title != '' && $review->review_body != '' && !$this->request->post('review_id')) {
 					# Log new User Email
-					$message = ORM::factory('message');
+					$message = ORM::factory('Message');
 					$message->addTo($listing->user->email);
 					$message->addReplyTo('admin@medvoyager.com');
 					$message->message_from = 'noreply@colorfulstudio.com';
@@ -181,7 +181,7 @@ class Controller_Listing extends Controller_Base {
 		$object = ORM::factory('listing');
 		$object->where($object->primary_key(),'=',$this->request->param('id'))->find();
 
-		$report_type = ORM::factory('report_type')->where('report_type_model','=',$object->object_name())->find();
+		$report_type = ORM::factory('Report_Type')->where('report_type_model','=',$object->object_name())->find();
 
 		// On form submission
 		if( $this->request->method() == Request::POST ){
@@ -200,7 +200,7 @@ class Controller_Listing extends Controller_Base {
 					$validation->rule('recaptcha_response_field',	'Recaptcha::validRecaptcha', array(':validation'));
 				}
 
-				$report = ORM::factory('report');
+				$report = ORM::factory('Report');
 				$report->values($this->request->post());
 				$report->user_id = $this->user->user_id;
 				$report->report_type_id = $report_type->report_type_id;
@@ -210,7 +210,7 @@ class Controller_Listing extends Controller_Base {
 				$report->save($validation);
 
 				# Log new User Email
-				$message = ORM::factory('message');
+				$message = ORM::factory('Message');
 				$message->addTo($object->user->email);
 				$message->addReplyTo('admin@medvoyager.com');
 				$message->message_from = 'noreply@colorfulstudio.com';
@@ -269,10 +269,10 @@ class Controller_Listing extends Controller_Base {
 		// Create new Recaptcha object from global keys
 		$Recaptcha = new Recaptcha();
 
-		$object = ORM::factory('review');
+		$object = ORM::factory('Review');
 		$object->where($object->primary_key(),'=',$this->request->param('action_id'))->with('listing')->find();
 
-		$report_type = ORM::factory('report_type')->where('report_type_model','=',$object->object_name())->find();
+		$report_type = ORM::factory('Report_Type')->where('report_type_model','=',$object->object_name())->find();
 
 		// On form submission
 		if( $this->request->method() == Request::POST ){
@@ -291,7 +291,7 @@ class Controller_Listing extends Controller_Base {
 					$validation->rule('recaptcha_response_field',	'Recaptcha::validRecaptcha', array(':validation'));
 				}
 
-				$report = ORM::factory('report');
+				$report = ORM::factory('Report');
 				$report->values($this->request->post());
 				$report->user_id = $this->user->user_id;
 				$report->report_type_id = $report_type->report_type_id;
@@ -301,7 +301,7 @@ class Controller_Listing extends Controller_Base {
 				$report->save($validation);
 
 				# Log new User Email
-				$message = ORM::factory('message');
+				$message = ORM::factory('Message');
 				$message->addTo($object->user->email);
 				$message->addReplyTo('admin@medvoyager.com');
 				$message->message_from = 'noreply@colorfulstudio.com';
@@ -381,10 +381,10 @@ class Controller_Listing extends Controller_Base {
 
 			if( $validation->check() ){
 
-				$listing = ORM::factory('listing')->where('listing_id','=',$this->request->param('id'))->find();
+				$listing = ORM::factory('Listing')->where('listing_id','=',$this->request->param('id'))->find();
 
 				# Log new User Email
-				$message = ORM::factory('message');
+				$message = ORM::factory('Message');
 				$message->addTo($listing->user->email);
 				$message->addReplyTo($this->user->email);
 				$message->message_from = 'noreply@colorfulstudio.com';
