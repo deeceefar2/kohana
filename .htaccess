@@ -1,0 +1,35 @@
+# Turn on URL rewriting
+RewriteEngine On
+
+#RewriteCond %{HTTP_HOST} ^medvoyager\.com$ [NC]
+#RewriteRule ^(.*)$ http://www.medvoyager.com/$1 [R=301,L]
+
+# Installation directory
+RewriteBase /
+
+# Protect hidden files from being viewed
+<Files .*>
+	Order Deny,Allow
+	Deny From All
+</Files>
+
+
+# Protect application and system files from being viewed
+RewriteRule ^(?:application|modules|system)\b.* index.php/$0 [L]
+
+# Protect application and system files from being viewed
+RewriteRule ^(?:assets)/.* index.php/$0 [PT]
+
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule .* index.php/$0 [PT]
+
+#Redirect specific controllers to HTTPS
+#RewriteCond %{SERVER_PORT} !^8081$
+#RewriteRule (login|account|register|payment) https://%{HTTP_HOST}/index.php [PT]
+#RewriteCond %{SERVER_PORT} !^8081$
+#RewriteRule ^/(.*) https://%{SERVER_NAME}/$1 [NC,R,L]
