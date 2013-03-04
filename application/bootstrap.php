@@ -101,6 +101,8 @@ Kohana::init(array(
 	'caching'		=> TRUE,
 ));
 
+Session::$default = 'database';
+
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
@@ -114,8 +116,6 @@ Kohana::$config->attach(new Config_File);
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
-
-
 $modules = array(
 	'database'					=> MODPATH . 'database',				// Database access
 	'cache'						=> MODPATH . 'cache',					// Caching with multiple backends
